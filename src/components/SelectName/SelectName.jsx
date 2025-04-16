@@ -8,7 +8,6 @@ import { SelectItem } from '@radix-ui/react-select';
 
 const SelectName = (props) => {
   const { tabStudents } = props;
-  console.log(tabStudents);
 
   return (
     <Select className='relative'>
