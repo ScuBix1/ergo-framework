@@ -1,4 +1,4 @@
-import Select from '../components/Select/Select';
+import SelectName from '../components/SelectName/SelectName';
 
 const students = [
   {
@@ -31,7 +31,7 @@ function Home() {
   return (
     <div>
       <h1 className='text-green-400'>Home Page</h1>
-      <Select tabStudents={students} />
+      <SelectName tabStudents={students} />
     </div>
   );
 }
