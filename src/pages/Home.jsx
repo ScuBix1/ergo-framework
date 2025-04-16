@@ -1,3 +1,4 @@
+import CheckIcon from '@/components/Icon/CheckIcon/CheckIcon';
 import SelectName from '../components/SelectName/SelectName';
 
 const students = [
@@ -6,24 +7,24 @@ const students = [
     lastname: 'monnin',
   },
   {
-    firstname: 'bastian',
-    lastname: 'monnin',
+    firstname: 'test',
+    lastname: 'nom',
   },
   {
-    firstname: 'bastian',
-    lastname: 'monnin',
+    firstname: 'test1',
+    lastname: 'nom',
   },
   {
-    firstname: 'bastian',
-    lastname: 'monnin',
+    firstname: 'test2',
+    lastname: 'nom',
   },
   {
-    firstname: 'bastian',
-    lastname: 'monnin',
+    firstname: 'test3',
+    lastname: 'nom',
   },
   {
-    firstname: 'bastian',
-    lastname: 'monnin',
+    firstname: 'test4',
+    lastname: 'nom',
   },
 ];
 
@@ -32,6 +33,7 @@ function Home() {
     <div>
       <h1 className='text-green-400'>Home Page</h1>
       <SelectName tabStudents={students} />
+      <CheckIcon className={'w-[300px]'} />
     </div>
   );
 }
