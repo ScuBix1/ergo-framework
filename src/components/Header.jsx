@@ -7,8 +7,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
-import { Button } from "./ui/button";
+} from '@/components/ui/navigation-menu';
+import { Button } from './ui/button';
 
 export default function Header() {
   return (
@@ -23,12 +23,12 @@ export default function Header() {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <a href="/about">Interface A</a>
+                <a href="/">Interface A</a>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <a href="/about">Interface B</a>
+                <a href="/interfaceB">Interface B</a>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>

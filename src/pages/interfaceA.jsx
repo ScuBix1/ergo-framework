@@ -38,24 +38,19 @@ function FormationAttendancePage() {
     { id: 15, name: 'Bobby Fischer', status: 'Absent', signature: '' },
   ]);
 
-  // Fonction pour rendre les boutons actifs ou inactifs en fonction du statut
   const getButtonState = (status, buttonType) => {
     switch (buttonType) {
       case 'cancelSignature':
-        // Actif uniquement pour les présents
         return status === 'Présent';
       case 'manualSignature':
-        // Actif pour les absents et en attente
         return status === 'Absent' || status === 'En attente';
       case 'setAbsent':
-        // Actif uniquement pour les en attente
         return status === 'En attente';
       default:
         return false;
     }
   };
 
-  // Fonction pour mettre à jour le statut d'un stagiaire
   const updateTraineeStatus = (id, newStatus) => {
     setTrainees(
       trainees.map((trainee) =>
@@ -70,14 +65,14 @@ function FormationAttendancePage() {
       <header className=" px-6 bg-white items-center justify-center flex mt-16">
         <div className="max-w-6xl mx-auto flex items-center justify-between text-center">
           <div className="flex items-center">
-            <Button variant="outline" className="mr-4">
+            <Button variant="outline" className="border-solid border-black">
               <span className="mr-2">←</span> Prev
             </Button>
             <h1 className="text-4xl font-bold mx-8">
               Formation du 14 avril 2025
             </h1>
           </div>
-          <Button variant="outline">
+          <Button variant="outline" className="border-solid border-black">
             Next <span className="ml-2">→</span>
           </Button>
         </div>
