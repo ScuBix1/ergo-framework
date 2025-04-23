@@ -24,11 +24,12 @@ Ce projet a été réalisé dans le cadre du **module "Ergonomie et Framework CS
 
 ### 📦 Installation
 
-````bash
+```bash
 npm install
+```
 
 ### Lancer le serveur
 
 ```bash
 npm run dev
-````
+```
