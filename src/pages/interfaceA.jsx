@@ -1,5 +1,11 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import {
   Table,
   TableBody,
@@ -8,15 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Input } from '@/components/ui/input';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import { useState } from 'react';
 
 function FormationAttendancePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -60,56 +58,55 @@ function FormationAttendancePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <header className=" px-6 bg-white items-center justify-center flex mt-16">
-        <div className="max-w-6xl mx-auto flex items-center justify-between text-center">
-          <div className="flex items-center">
-            <Button variant="outline" className="border-solid border-black">
-              <span className="mr-2">←</span> Prev
+    <div className='flex flex-col min-h-screen'>
+      <header className=' px-6 bg-white items-center justify-center flex mt-16'>
+        <div className='max-w-6xl mx-auto flex items-center justify-between text-center'>
+          <div className='flex items-center'>
+            <Button variant='outline' className='border-solid border-black'>
+              <span className='mr-2'>←</span> Prev
             </Button>
-            <h1 className="text-4xl font-bold mx-8">
+            <h1 className='text-4xl font-bold mx-8'>
               Formation du 14 avril 2025
             </h1>
           </div>
-          <Button variant="outline" className="border-solid border-black">
-            Next <span className="ml-2">→</span>
+          <Button variant='outline' className='border-solid border-black'>
+            Next <span className='ml-2'>→</span>
           </Button>
         </div>
       </header>
 
-      <main className="flex-1 px-6 py-4 bg-white">
-        <div className="max-w-6xl mx-auto ">
-          <div className="flex justify-center items-center flex-col h-auto mb-16">
-            <h2 className="text-lg mb-4">
+      <main className='flex-1 px-6 py-4 bg-white'>
+        <div className='max-w-6xl mx-auto '>
+          <div className='flex justify-center items-center flex-col h-auto mb-16'>
+            <h2 className='text-lg mb-4'>
               Session du matin: Formation de Développement Web
             </h2>
 
-            <div className="flex gap-4 mb-6">
+            <div className='flex gap-4 mb-6'>
               <Button
-                variant="outline"
-                className="bg-white"
+                variant='outline'
+                className='bg-white'
                 onClick={() => setModalOpen(true)}
               >
                 Générer le QR code
               </Button>
-              <Button className="bg-black text-white hover:bg-black/90">
+              <Button className='bg-black text-white hover:bg-black/90'>
                 Copier le lien de signature
               </Button>
             </div>
           </div>
 
-          <div className="flex justify-between items-center mb-8">
-            <div className="font-bold">
+          <div className='flex justify-between items-center mb-8'>
+            <div className='font-bold'>
               Liste des stagiaires ( {trainees.length} stagiaires )
             </div>
-            <div className="flex gap-2 h-8">
+            <div className='flex gap-2 h-8'>
               <Input
-                type="text"
-                placeholder="Rechercher un stagiaire..."
-                className="w-80"
+                type='text'
+                placeholder='Rechercher un stagiaire...'
+                className='w-80'
               />
-              <Button className="bg-black text-white hover:bg-black/90">
+              <Button className='bg-black text-white hover:bg-black/90'>
                 Rechercher
               </Button>
             </div>
@@ -117,26 +114,26 @@ function FormationAttendancePage() {
 
           <Table>
             <TableHeader>
-              <TableRow className="bg-white">
-                <TableHead className="w-1/4">Nom</TableHead>
-                <TableHead className="w-1/6">Status</TableHead>
-                <TableHead className="w-1/4">Signature</TableHead>
-                <TableHead className="w-1/3">Actions</TableHead>
+              <TableRow className='bg-white'>
+                <TableHead className='w-1/4'>Nom</TableHead>
+                <TableHead className='w-1/6'>Status</TableHead>
+                <TableHead className='w-1/4'>Signature</TableHead>
+                <TableHead className='w-1/3'>Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {trainees.map((trainee) => (
                 <TableRow
                   key={trainee.id}
-                  className="border-t border-black py-4 font-bold"
+                  className='border-t border-black py-4 font-bold'
                 >
                   <TableCell>{trainee.name}</TableCell>
                   <TableCell>{trainee.status}</TableCell>
-                  <TableCell className="bg-gray-200 h-12"></TableCell>
+                  <TableCell className='bg-gray-200 h-12'></TableCell>
                   <TableCell>
-                    <div className="flex gap-2">
+                    <div className='flex gap-2'>
                       <Button
-                        variant="outline"
+                        variant='outline'
                         className={
                           getButtonState(trainee.status, 'setAbsent')
                             ? 'bg-black text-white hover:bg-black/90'
@@ -150,7 +147,7 @@ function FormationAttendancePage() {
                         Mettre absent
                       </Button>
                       <Button
-                        variant="outline"
+                        variant='outline'
                         className={
                           getButtonState(trainee.status, 'cancelSignature')
                             ? 'bg-black text-white hover:bg-black/90'
@@ -166,7 +163,7 @@ function FormationAttendancePage() {
                         Annuler la signature
                       </Button>
                       <Button
-                        variant="outline"
+                        variant='outline'
                         className={
                           getButtonState(trainee.status, 'manualSignature')
                             ? 'bg-black text-white hover:bg-black/90'
@@ -191,33 +188,33 @@ function FormationAttendancePage() {
       </main>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md p-0">
-          <DialogHeader className="p-6 pb-2">
-            <DialogTitle className="text-xl font-medium text-center">
+        <DialogContent className='max-w-md p-0'>
+          <DialogHeader className='p-6 pb-2'>
+            <DialogTitle className='text-xl font-medium text-center'>
               Scanner le QR Code
             </DialogTitle>
           </DialogHeader>
-          <div className="p-6 pt-0 flex justify-center">
-            <div className="w-64 h-64 relative">
+          <div className='p-6 pt-0 flex justify-center'>
+            <div className='w-64 h-64 relative'>
               <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 200 200"
-                xmlns="http://www.w3.org/2000/svg"
+                width='100%'
+                height='100%'
+                viewBox='0 0 200 200'
+                xmlns='http://www.w3.org/2000/svg'
               >
-                <rect x="0" y="0" width="200" height="200" fill="white" />
+                <rect x='0' y='0' width='200' height='200' fill='white' />
 
-                <rect x="10" y="10" width="30" height="30" fill="black" />
-                <rect x="15" y="15" width="20" height="20" fill="white" />
-                <rect x="20" y="20" width="10" height="10" fill="black" />
+                <rect x='10' y='10' width='30' height='30' fill='black' />
+                <rect x='15' y='15' width='20' height='20' fill='white' />
+                <rect x='20' y='20' width='10' height='10' fill='black' />
 
-                <rect x="160" y="10" width="30" height="30" fill="black" />
-                <rect x="165" y="15" width="20" height="20" fill="white" />
-                <rect x="170" y="20" width="10" height="10" fill="black" />
+                <rect x='160' y='10' width='30' height='30' fill='black' />
+                <rect x='165' y='15' width='20' height='20' fill='white' />
+                <rect x='170' y='20' width='10' height='10' fill='black' />
 
-                <rect x="10" y="160" width="30" height="30" fill="black" />
-                <rect x="15" y="165" width="20" height="20" fill="white" />
-                <rect x="20" y="170" width="10" height="10" fill="black" />
+                <rect x='10' y='160' width='30' height='30' fill='black' />
+                <rect x='15' y='165' width='20' height='20' fill='white' />
+                <rect x='20' y='170' width='10' height='10' fill='black' />
 
                 {Array.from({ length: 10 }).map((_, i) => (
                   <g key={i}>
@@ -228,9 +225,9 @@ function FormationAttendancePage() {
                           key={`${i}-${j}`}
                           x={50 + i * 10}
                           y={50 + j * 10}
-                          width="10"
-                          height="10"
-                          fill="black"
+                          width='10'
+                          height='10'
+                          fill='black'
                         />
                       ) : null;
                     })}
@@ -238,31 +235,31 @@ function FormationAttendancePage() {
                 ))}
 
                 <rect
-                  x="50"
-                  y="10"
-                  width="100"
-                  height="10"
+                  x='50'
+                  y='10'
+                  width='100'
+                  height='10'
                   fill={Math.random() > 0.5 ? 'black' : 'white'}
                 />
                 <rect
-                  x="10"
-                  y="50"
-                  width="10"
-                  height="100"
+                  x='10'
+                  y='50'
+                  width='10'
+                  height='100'
                   fill={Math.random() > 0.5 ? 'black' : 'white'}
                 />
                 <rect
-                  x="180"
-                  y="50"
-                  width="10"
-                  height="100"
+                  x='180'
+                  y='50'
+                  width='10'
+                  height='100'
                   fill={Math.random() > 0.5 ? 'black' : 'white'}
                 />
                 <rect
-                  x="50"
-                  y="180"
-                  width="100"
-                  height="10"
+                  x='50'
+                  y='180'
+                  width='100'
+                  height='10'
                   fill={Math.random() > 0.5 ? 'black' : 'white'}
                 />
               </svg>
@@ -270,8 +267,6 @@ function FormationAttendancePage() {
           </div>
         </DialogContent>
       </Dialog>
-
-      <Footer />
     </div>
   );
 }

@@ -6,12 +6,10 @@ import {
 } from '@/components/ui/select';
 import { SelectItem } from '@radix-ui/react-select';
 import clsx from 'clsx';
-import { useState } from 'react';
 import CheckIcon from '../Icon/CheckIcon/CheckIcon';
 
 const SelectName = (props) => {
-  const { tabStudents } = props;
-  const [selectedStudent, setSelectedStudent] = useState('');
+  const { tabStudents, selectedStudent, setSelectedStudent } = props;
 
   return (
     <Select value={selectedStudent} onValueChange={setSelectedStudent}>
@@ -32,13 +30,23 @@ const SelectName = (props) => {
       </SelectTrigger>
       <SelectContent className='-ml-[9px]'>
         {tabStudents.map((student, key) => {
+          const fullName = `${student.firstname} ${student.lastname}`;
           return (
             <SelectItem
               className='hover:bg-gray-100 hover:border-0 cursor-pointer px-4 py-2 data-[highlighted]:outline-none data-[highlighted]:ring-0 data-[highlighted]:bg-gray-100 data-[state=checked]:bg-[#F1F5F9] '
               key={`student-${key}`}
               value={`${student.firstname} ${student.lastname}`}
             >
-              {student.firstname} {student.lastname}
+              {fullName === selectedStudent ? (
+                <span className='flex items-center gap-x-[10px]'>
+                  <CheckIcon className='w-[30px]' />
+                  {student.firstname} {student.lastname}
+                </span>
+              ) : (
+                <span className='pl-[40px]'>
+                  {student.firstname} {student.lastname}
+                </span>
+              )}
             </SelectItem>
           );
         })}
